@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# Devlane
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Your ideas. Visualized.**
 
-Currently, two official plugins are available:
+A modern, visual workflow tool built for creators. Devlane helps you plan, organize, and publish your content seamlessly—from initial ideas to published work. Built with React, TypeScript, and Tailwind CSS for a smooth, intuitive experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+🎨 **Visual Content Workflow** - See your entire content pipeline at a glance with intuitive kanban-style boards
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⚡ **Drag & Drop Pipeline** - Move content through your workflow effortlessly with intuitive drag-and-drop
 
-## Expanding the ESLint configuration
+👥 **Creator-Focused Planning** - Built by creators, for creators. Plan videos, podcasts, blogs, and social posts in one place
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+📊 **Publishing Tracker** - Track your publishing consistency, streaks, and content performance
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+📅 **Calendar Scheduling** - Visualize your content calendar and never miss a publishing date
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🔒 **Content Backup** - All your drafts, scripts, and ideas safely stored
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+- **Frontend Framework:** React + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** Shadcn/ui (40+ pre-built components)
+- **Animations:** Framer Motion
+- **Routing:** React Router
+- **Icons:** Lucide React
+- **Code Quality:** ESLint
+
+## Getting Started
+
+### Prerequisites
+- Node.js 20+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Devlane
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Start the development server:
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+The application will be available at `http://localhost:5173`
+
+## Available Scripts
+
+- `npm run dev` - Start development server with hot module replacement
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint to check code quality
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Shadcn UI components (40+)
+│   ├── Hero.tsx        # Landing page hero section
+│   ├── Features.tsx    # Features showcase
+│   ├── Workflow.tsx    # Workflow demonstration
+│   ├── PainPoints.tsx  # Problem statements
+│   ├── CTA.tsx         # Call-to-action section
+│   └── ...             # Other page components
+├── pages/              # Page components
+│   └── Home.tsx        # Homepage
+├── hooks/              # Custom React hooks
+│   ├── useLenis.ts     # Smooth scroll hook
+│   └── use-mobile.ts   # Mobile detection hook
+├── lib/                # Utility functions
+├── App.tsx             # Root component
+└── main.tsx            # Application entry point
+```
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+This project is proprietary and confidential.
+
+## Contributors
+
+Built with ❤️ for creators
   },
 ])
 ```

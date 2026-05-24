@@ -24,7 +24,7 @@ export default function SignInPage() {
               <path d="M42 18 C42 18, 56 22, 56 38 C56 46, 50 52, 42 52 C40 44, 40 36, 38 28 C40 24, 42 18, 42 18Z" fill="#2B5EBE" opacity="0.75" />
             </svg>
             <h1 style={styles.brandTitle}>DEVLANE DASHBOARD</h1>
-            <p style={styles.brandSubtitle}>Helps in organizing your content Publishing Habits.</p>
+            <p style={styles.brandSubtitle}>Organize your content Publishing Habits.</p>
           </div>
         </div>
 
@@ -119,7 +119,7 @@ const styles: Record<string, React.CSSProperties> = {
   position: "absolute",
   top: 0,
   left: 0,
-  width: "45%",
+  width: "46%",
   height: "100%",
   backgroundColor: "#ffffff",
   clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)",
@@ -128,8 +128,10 @@ const styles: Record<string, React.CSSProperties> = {
   card: {
   position: "relative",
   display: "flex",
-  width: "1094px",
+  width: "90%",
   height: "525px",
+  maxWidth: "1094",
+  maxHeight: "525px",
   borderRadius: "1px",
   border: "5px #4a7fd4",
   overflow: "hidden",
@@ -137,35 +139,38 @@ const styles: Record<string, React.CSSProperties> = {
   zIndex: 1,
   backgroundColor: "transparent",
 },
+
   leftPanel: {
-    width: "52%",
+    width: "45%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "transparent",
     zIndex: 2,
   },
+
   brandContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
-    paddingRight: "60px",
+    paddingRight: "20px",
+    paddingBottom: "20px"
   },
   brandTitle: {
-    fontSize: "16px",
+    fontSize: "clamp(1.2rem, 3vw, 2rem)",
     fontWeight: 700,
     letterSpacing: "1.5px",
     color: "#2B5EBE",
-    margin: "0 0 6px 0",
+    margin: "0 15px 0 1",
   },
   brandSubtitle: {
-    fontSize: "10px",
+    fontSize: "15px",
     color: "black",
     fontWeight: 500,
-    letterSpacing: "0.4px",
+    letterSpacing: "0.1px",
     margin: 0,
-    maxWidth: "140px",
+    maxWidth: "200px",
     lineHeight: "1.5",
   },
   rightPanel: {
@@ -177,11 +182,12 @@ const styles: Record<string, React.CSSProperties> = {
     zIndex: 1,
   },
   formCard: {
-  width: "260px",
+  width: "100%",
   display: "flex",
   flexDirection: "column",
   marginLeft: "0px",
-  marginRight: "60px",
+  marginRight: "20px",
+  maxWidth: "260px"
 },
   formGroup: {
     display: "flex",

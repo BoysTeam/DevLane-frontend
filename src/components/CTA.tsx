@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CTA() {
+  const navigate = useNavigate();
   return (
+  
     <section className="relative py-32 bg-[#030303] overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -56,10 +59,10 @@ export default function CTA() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="group px-10 py-5 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold text-base flex items-center gap-3 hover:shadow-[0_0_60px_rgba(147,51,234,0.4)] transition-all duration-300 animate-pulse-glow"
-            >
+            onClick={() => navigate('/login')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}>
+
               Get Started Free
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>

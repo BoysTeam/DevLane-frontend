@@ -73,7 +73,7 @@ const itemVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-32 bg-[#030303]">
+    <section id="features" className="relative py-16 md:py-32 bg-[#030303]">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none" />
 
@@ -102,13 +102,14 @@ export default function Features() {
           </p>
         </motion.div>
 
-        {/* Feature Grid */}
+        {/* Feature Grid / Slider on Mobile */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 md:pb-0 scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {features.map((feature) => {
             const Icon = feature.icon;
@@ -116,7 +117,7 @@ export default function Features() {
               <motion.div
                 key={feature.title}
                 variants={itemVariants}
-                className={`group relative glass-card p-8 border ${feature.border} ${feature.glow} transition-all duration-500 hover:border-white/20`}
+                className={`flex-shrink-0 w-[85vw] md:w-auto snap-center group relative glass-card p-8 border ${feature.border} ${feature.glow} transition-all duration-500 hover:border-white/20`}
               >
                 {/* Icon */}
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6`}>

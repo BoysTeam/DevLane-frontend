@@ -1,8 +1,8 @@
-# Devlane
+# CreatorFlow
 
 **Your ideas. Visualized.**
 
-A modern, visual workflow tool built for creators. Devlane helps you plan, organize, and publish your content seamlessly—from initial ideas to published work. Built with React, TypeScript, and Tailwind CSS for a smooth, intuitive experience.
+A modern, visual workflow tool built for creators. CreatorFlow helps you plan, organize, and publish your content seamlessly—from initial ideas to published work. Built with React, TypeScript, and Tailwind CSS for a smooth, intuitive experience.
 
 ## Features
 
@@ -40,7 +40,7 @@ A modern, visual workflow tool built for creators. Devlane helps you plan, organ
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd Devlane
+cd CreatorFlow
 ```
 
 2. Install dependencies:

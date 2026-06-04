@@ -57,8 +57,8 @@ export function SharedInput({
         <input
           type={inputType}
           className={`w-full bg-zinc-950/60 border ${error
-              ? 'border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500'
-              : 'border-zinc-800/80 focus:border-purple-500 focus:ring-1 focus:ring-purple-500'
+            ? 'border-red-500/50 focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            : 'border-zinc-800/80 focus:border-purple-500 focus:ring-1 focus:ring-purple-500'
             } rounded-xl py-3.5 ${Icon ? 'pl-12' : 'px-4'
             } pr-12 text-sm text-white placeholder-zinc-600 focus:outline-none transition-all duration-300 backdrop-blur-sm`}
           {...registration}
@@ -300,13 +300,8 @@ function BrandingPanel() {
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-cyan-500/10 blur-[80px]" />
 
       {/* Brand Logo Header */}
-      <a href="/" className="flex items-center gap-2 group relative z-10">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-purple-500/20">
-          <Layout className="w-5 h-5 text-white" />
-        </div>
-        <span className="text-xl font-bold text-white tracking-tight">
-          Devlane
-        </span>
+      <a href="/" className="flex items-center group relative z-10">
+        <img src="/logo.png" alt="CreatorFlow Logo" className="h-24 w-auto object-contain" />
       </a>
 
       {/* Main Core Copy */}
@@ -358,7 +353,7 @@ function BrandingPanel() {
 
       {/* Tiny Footer */}
       <div className="relative z-10 text-xs text-zinc-500">
-        © 2026 Devlane Inc. All rights reserved.
+        © 2026 CreatorFlow Inc. All rights reserved.
       </div>
     </div>
   );
@@ -393,13 +388,8 @@ export default function Auth() {
         <div className="col-span-12 lg:col-span-7 flex flex-col justify-center items-center p-6 sm:p-12 md:p-16 relative">
 
           {/* Back button/Logo for mobile */}
-          <div className="lg:hidden absolute top-6 left-6 flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center">
-              <Layout className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-base font-semibold text-white tracking-tight">
-              Devlane
-            </span>
+          <div className="lg:hidden absolute top-6 left-6 flex items-center">
+            <img src="/logo.png" alt="CreatorFlow Logo" className="h-14 w-auto object-contain" />
           </div>
 
           {/* Auth Card Content */}
@@ -412,7 +402,7 @@ export default function Auth() {
             {/* Header Text */}
             <div className="space-y-2 text-center lg:text-left">
               <h2 className="text-3xl font-bold tracking-tight text-white">
-                {activeTab === 'login' ? 'Welcome back' : 'Get started with Devlane'}
+                {activeTab === 'login' ? 'Welcome back' : 'Get started with CreatorFlow'}
               </h2>
               <p className="text-sm text-zinc-400">
                 {activeTab === 'login'

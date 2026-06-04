@@ -104,7 +104,7 @@ export default function Hero() {
             {/* Character Image */}
             <motion.img
               src="/images/hero-character.png"
-              alt="Devlane Creator Character"
+              alt="CreatorFlow Creator Character"
               className="relative z-10 w-full h-auto drop-shadow-2xl"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}

@@ -21,13 +21,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-16">
           {/* Brand */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center">
-                <Layout className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-semibold text-white tracking-tight">
-                Devlane
-              </span>
+            <a href="#" className="flex items-center mb-6">
+              <img src="/logo.png" alt="CreatorFlow Logo" className="h-10 w-auto object-contain" />
             </a>
             <p className="text-sm text-zinc-500 mb-6 max-w-xs leading-relaxed">
               The visual workflow tool built specifically for content creators.
@@ -74,7 +69,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">
-            &copy; {new Date().getFullYear()} Devlane. All rights reserved.
+            &copy; {new Date().getFullYear()} CreatorFlow. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">

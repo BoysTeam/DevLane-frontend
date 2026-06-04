@@ -52,7 +52,7 @@ export default function CTA() {
           {/* Subtext */}
           <p className="text-lg text-zinc-400 max-w-xl mx-auto mb-12 leading-relaxed">
             Join thousands of creators who organize their content pipeline with
-            Devlane. Your best work starts with a clear workflow.
+            CreatorFlow. Your best work starts with a clear workflow.
           </p>
 
           {/* CTAs */}

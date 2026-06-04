@@ -54,7 +54,7 @@ export default function PainPoints() {
             <span className="text-gradient">creator pain points</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            We understand the struggle. Devlane was built to solve the specific
+            We understand the struggle. CreatorFlow was built to solve the specific
             challenges content creators face every day.
           </p>
         </motion.div>

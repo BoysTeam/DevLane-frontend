@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, FileText, Video, Wand2, Calendar, CheckCircle2, GripVertical, ArrowRight } from 'lucide-react';
+import { Lightbulb, FileText, Video, Wand2, Calendar, CheckCircle2, GripVertical, ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface Card {
   id: string;
@@ -89,8 +89,20 @@ export default function Workflow() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="workflow" className="relative py-32 bg-[#030303] overflow-hidden">
+    <section id="workflow" className="relative py-16 md:py-32 bg-[#030303] overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-900/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[150px] pointer-events-none" />
@@ -104,11 +116,26 @@ export default function Workflow() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6">
-            <ArrowRight className="w-3 h-3 text-purple-400" />
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-purple-300">
-              The Workflow
-            </span>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <button 
+              onClick={scrollLeft}
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-purple-500/30 bg-purple-500/10 cursor-pointer hover:bg-purple-500/20 transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 text-purple-400 group-hover:-translate-x-1 transition-transform duration-300" />
+            </button>
+
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-purple-300">
+                The Workflow
+              </span>
+            </div>
+
+            <button 
+              onClick={scrollRight}
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-purple-500/30 bg-purple-500/10 cursor-pointer hover:bg-purple-500/20 transition-colors group"
+            >
+              <ArrowRight className="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
           </div>
           <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-[-1.5px] mb-6">
             From <span className="text-gradient">idea</span> to{' '}
@@ -212,21 +239,40 @@ export default function Workflow() {
             })}
           </div>
 
-          {/* Scroll hint */}
-          <div className="flex items-center justify-center gap-2 mt-6 text-zinc-600 md:hidden">
-            <span className="text-xs">Swipe to see all stages</span>
-            <ArrowRight className="w-3 h-3" />
+          {/* Scroll hint with navigation */}
+          <div className="flex w-full items-center justify-center gap-4 mt-6 text-zinc-600 md:hidden">
+            <button 
+              onClick={scrollLeft}
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] cursor-pointer hover:text-zinc-400 transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+            </button>
+            <span className="text-xs">Swipe or tap arrows</span>
+            <button 
+              onClick={scrollRight}
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] cursor-pointer hover:text-zinc-400 transition-colors group"
+            >
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
           </div>
         </motion.div>
 
         {/* Workflow arrows - desktop only */}
         <div className="hidden lg:flex items-center justify-center gap-2 mt-8">
           {stages.slice(0, -1).map((stage, i) => (
-            <div key={stage.id} className="flex items-center">
-              <div className="w-8 h-px bg-gradient-to-r from-purple-500/50 to-cyan-500/50" />
-              <ArrowRight className="w-3 h-3 text-zinc-600 -ml-1" />
+            <button 
+              key={stage.id} 
+              onClick={() => {
+                if (scrollRef.current) {
+                  scrollRef.current.scrollTo({ left: (i + 1) * 296, behavior: 'smooth' });
+                }
+              }}
+              className="flex items-center group cursor-pointer"
+            >
+              <div className="w-8 h-px bg-gradient-to-r from-purple-500/50 to-cyan-500/50 group-hover:from-purple-400 group-hover:to-cyan-400 transition-colors" />
+              <ArrowRight className="w-3 h-3 text-zinc-600 -ml-1 group-hover:text-zinc-300 transition-colors group-hover:translate-x-1 duration-300" />
               {i < stages.length - 2 && <div className="w-16" />}
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -40,21 +40,15 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-500 ${
-        scrolled
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-500 ${scrolled
           ? 'bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl'
           : 'bg-transparent border border-transparent'
-      } rounded-full px-6 py-3`}
+        } rounded-full px-6 py-3`}
     >
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center">
-            <Layout className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-lg font-semibold text-white tracking-tight">
-            Devlane
-          </span>
+        <a href="#" className="flex items-center">
+          <img src="/logo.png" alt="CreatorFlow Logo" className="h-24 w-auto object-contain" />
         </a>
 
         {/* Desktop Links */}
@@ -81,7 +75,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
-          <button 
+          <button
             onClick={() => navigate('/auth')}
             className="hidden md:block px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105"
           >
@@ -116,7 +110,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
                 {link.label}
               </button>
             ))}
-            <button 
+            <button
               onClick={() => {
                 setMobileOpen(false);
                 navigate('/auth');

@@ -21,13 +21,13 @@ export function SettingsView() {
           <div className="space-y-1.5">
             <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block">Username</span>
             <div className="bg-zinc-900 border border-white/5 rounded-xl p-3.5 text-sm text-zinc-300">
-              testuser_gemini
+              testuser
             </div>
           </div>
           <div className="space-y-1.5">
             <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider block">Email Address</span>
             <div className="bg-zinc-900 border border-white/5 rounded-xl p-3.5 text-sm text-zinc-300">
-              testuser_gemini@example.com
+              testuseri@example.com
             </div>
           </div>
         </div>
@@ -46,11 +46,10 @@ export function SettingsView() {
                 <p className="text-sm font-semibold text-white">{item.platform}</p>
                 <p className="text-xs text-zinc-500">{item.details}</p>
               </div>
-              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                item.status === 'Connected'
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${item.status === 'Connected'
                   ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
                   : 'bg-zinc-900 border-white/5 text-zinc-500'
-              }`}>
+                }`}>
                 {item.status}
               </span>
             </div>

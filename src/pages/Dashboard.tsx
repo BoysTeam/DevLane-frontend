@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import type { DragStartEvent, DragEndEvent } from '@dnd-kit/core';
 import { AnimatePresence } from 'framer-motion';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
@@ -26,6 +27,7 @@ export default function Dashboard() {
   // Navigation & UI States
   const [activeTab, setActiveTab] = useState<'board' | 'analytics' | 'calendar' | 'settings'>('board');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [activeEditorCard, setActiveEditorCard] = useState<Card | null>(null);
@@ -81,34 +83,29 @@ export default function Dashboard() {
   };
 
   // Drag and Drop Handlers
-  const handleDragStart = (e: React.DragEvent, card: Card) => {
-    e.dataTransfer.setData('text/plain', card.id);
-    e.dataTransfer.effectAllowed = 'move';
-    setDraggedCardId(card.id);
+  const handleDragStart = (e: DragStartEvent) => {
+    setDraggedCardId(e.active.id as string);
   };
 
-  const handleDragEnd = () => {
+  const handleDragEnd = (e: DragEndEvent) => {
     setDraggedCardId(null);
-  };
+    const { active, over } = e;
 
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
+    if (over && over.id) {
+      const cardId = active.id as string;
+      const targetStatus = over.id as string;
+      const draggedCard = cardsList.find((c) => c.id === cardId);
 
-  const handleDrop = (e: React.DragEvent, targetStatus: string) => {
-    e.preventDefault();
-    const cardId = e.dataTransfer.getData('text/plain');
-    const draggedCard = cardsList.find((c) => c.id === cardId);
-
-    if (draggedCard && draggedCard.status.toUpperCase() !== targetStatus.toUpperCase()) {
-      updateCardMutation.mutate({
-        id: cardId,
-        data: {
-          title: draggedCard.title,
-          platform: draggedCard.platform,
-          status: targetStatus,
-        }
-      });
+      if (draggedCard && draggedCard.status.toUpperCase() !== targetStatus.toUpperCase()) {
+        updateCardMutation.mutate({
+          id: cardId,
+          data: {
+            title: draggedCard.title,
+            platform: draggedCard.platform,
+            status: targetStatus,
+          }
+        });
+      }
     }
   };
 
@@ -150,7 +147,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white flex overflow-hidden font-sans">
+    <div className="h-screen w-full bg-[#030303] text-white flex overflow-hidden relative font-sans">
       {/* Background ambient glow */}
       <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-[150px] pointer-events-none" />
@@ -161,13 +158,15 @@ export default function Dashboard() {
         setActiveTab={setActiveTab}
         isSidebarCollapsed={isSidebarCollapsed}
         setIsSidebarCollapsed={setIsSidebarCollapsed}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
         onLogout={handleLogout}
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col h-full overflow-hidden">
         {/* Top Navbar */}
-        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} onMenuClick={() => setIsMobileMenuOpen(true)} />
 
         {/* Dynamic Tab Panels */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8 relative">
@@ -189,8 +188,6 @@ export default function Dashboard() {
                   onDeleteCard={handleDeleteCard}
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
-                  onDragOver={handleDragOver}
-                  onDrop={handleDrop}
                   isUpdating={updateCardMutation.isPending}
                   draggedCardId={draggedCardId}
                 />

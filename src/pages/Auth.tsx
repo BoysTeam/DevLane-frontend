@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff, Layout, ArrowRight, Code, Cpu, Globe } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff,  ArrowRight, Code, Cpu, Globe } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';

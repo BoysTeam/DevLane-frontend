@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layout, Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
 interface NavbarProps {

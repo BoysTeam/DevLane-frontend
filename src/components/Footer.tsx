@@ -1,4 +1,4 @@
-import { Layout, Youtube, Twitter, Instagram, Github } from 'lucide-react';
+import { Youtube, Twitter, Instagram, Github } from 'lucide-react';
 
 const footerLinks = {
   Product: ['Features', 'Pricing', 'Changelog', 'Roadmap', 'Integrations'],

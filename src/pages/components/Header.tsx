@@ -1,5 +1,5 @@
 import { Avatar } from '@radix-ui/react-avatar';
-import { Search, Bell, Layout, Menu, User } from 'lucide-react';
+import { Search, Bell, Menu, User } from 'lucide-react';
 
 interface HeaderProps {
   searchQuery: string;

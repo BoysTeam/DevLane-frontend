@@ -7,7 +7,7 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  Layout,
+
 } from 'lucide-react';
 
 const navItems = [

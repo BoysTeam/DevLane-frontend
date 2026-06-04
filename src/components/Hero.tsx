@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router';
 import { Play, ArrowRight } from 'lucide-react';
 import VoidTunnel from './VoidTunnel';
 import KineticTextSlide from './KineticTextSlide';
 import FloatingCards from './FloatingCards';
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* Shader Background */}
@@ -55,7 +57,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
           >
-            <button className="group px-8 py-4 rounded-full bg-white text-black font-semibold text-sm flex items-center gap-2 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105">
+            <button 
+              onClick={() => navigate('/auth')}
+              className="group px-8 py-4 rounded-full bg-white text-black font-semibold text-sm flex items-center gap-2 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105"
+            >
               Get Started Free
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout, Sun, Moon, Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 interface NavbarProps {
   theme: 'dark' | 'light';
@@ -14,6 +15,7 @@ const navLinks = [
 ];
 
 export default function Navbar({ theme, toggleTheme }: NavbarProps) {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -79,7 +81,10 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
-          <button className="hidden md:block px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105">
+          <button 
+            onClick={() => navigate('/auth')}
+            className="hidden md:block px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(147,51,234,0.4)] transition-all duration-300 hover:scale-105"
+          >
             Start Creating
           </button>
 
@@ -111,7 +116,13 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
                 {link.label}
               </button>
             ))}
-            <button className="w-full mt-3 px-5 py-3 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm font-medium">
+            <button 
+              onClick={() => {
+                setMobileOpen(false);
+                navigate('/auth');
+              }}
+              className="w-full mt-3 px-5 py-3 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white text-sm font-medium"
+            >
               Start Creating
             </button>
           </motion.div>
